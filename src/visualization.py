@@ -64,6 +64,9 @@ def visualize_smoking_data(data_path_1, data_path_2, year_1, year_2):
 
     ax.set_xticklabels(["No", "Not applicable", "Yes"])
 
+    plt.savefig("images/figure4.png")
+
+
     plt.figure(figsize=(12, 6))
     ax = sns.barplot(x="TreatmentInHealthFacilities", y="DeathsBySmokingPerPopulation", data=df_2)
     plt.title("Impact of Treatment in Health Facilities on Deaths by Smoking")
@@ -72,7 +75,7 @@ def visualize_smoking_data(data_path_1, data_path_2, year_1, year_2):
 
     ax.set_xticklabels(["No", "Yes in some", "Yes in most"])
 
-    plt.savefig("images/figure4.png")
+    plt.savefig("images/figure5.png")
 
 
     plt.figure(figsize=(8, 6))
@@ -84,7 +87,7 @@ def visualize_smoking_data(data_path_1, data_path_2, year_1, year_2):
     correlation = df_2['MostSoldBrandCigarettePriceInUSD'].corr(df_2['CigaretteSmokingPrevalence'])
     print(f"Pearson's Correlation Coefficient: {correlation}")
 
-    plt.savefig("images/figure5.png")
+    plt.savefig("images/figure6.png")
 
     numeric_columns = ["CigaretteSmokingPrevalence", "DeathsBySmoking", "GDPinUSD", "Population"]
 
@@ -93,7 +96,8 @@ def visualize_smoking_data(data_path_1, data_path_2, year_1, year_2):
     plt.figure(figsize=(10, 8))
     sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
     plt.title("Correlation Heatmap")
-    plt.savefig("images/figure6.png")
+
+    plt.savefig("images/figure7.png")
 
     fig = px.choropleth(
       df_2, 
@@ -105,4 +109,5 @@ def visualize_smoking_data(data_path_1, data_path_2, year_1, year_2):
     )
 
     fig.update_geos(projection_type="natural earth")
-    fig.write_image("images/figure7.png")
+    
+    fig.write_image("images/figure8.png")
